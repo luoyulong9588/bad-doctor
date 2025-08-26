@@ -13,18 +13,18 @@
 
      // 允许右键点击
     document.oncontextmenu = function(event) {
-        // 你可以在这里添加自定义的右键菜单代码，或者简单地允许默认行为
-        return true; // 允许右键菜单
+
+        return true;
     };
 
-    // 允许F12键打开开发者工具
+
     document.onkeydown = document.onkeyup = document.onkeypress = function(event) {
         let e = event || window.event || arguments.callee.caller.arguments[0];
         if (e && e.keyCode == 123) {
-            // 允许F12键的默认行为
-            return true; // 不阻止F12键
+
+            return true;
         }
-        // 其他按键的默认处理
+
         return;
     };
 

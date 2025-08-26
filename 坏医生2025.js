@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         坏医生自动播放与答题22
+// @name         坏医生自动播放与答题2025
 // @namespace    http://tampermonkey.net/
 // @version      0.2
 // @description  打开好医生继续教育页面即可，选择课程可自动完成学习。已适配2023新版答题界面。
-// @author       luoyulong
+// @author       luoyulong@cqmu
 // @match        *://*.cmechina.net/*
 // @grant        none
 // ==/UserScript==
@@ -11,20 +11,20 @@
 (function () {
 	'use strict';
 
-     // 允许右键点击
+
     document.oncontextmenu = function(event) {
-        // 你可以在这里添加自定义的右键菜单代码，或者简单地允许默认行为
-        return true; // 允许右键菜单
+
+        return true;
     };
 
     // 允许F12键打开开发者工具
     document.onkeydown = document.onkeyup = document.onkeypress = function(event) {
         let e = event || window.event || arguments.callee.caller.arguments[0];
         if (e && e.keyCode == 123) {
-            // 允许F12键的默认行为
-            return true; // 不阻止F12键
+
+            return true;
         }
-        // 其他按键的默认处理
+
         return;
     };
 
@@ -173,29 +173,28 @@
 			doTest: function () {
 
 				function generateAllCombinations(arr) {
-					// 用于存储所有组合的数组
+
 					const combinations = [];
 
-					// 递归函数，用于生成组合
+
 					function buildCombinations(start, currentCombo) {
-						// 如果当前组合长度大于等于2，则将其添加到结果数组中
+
 						if (currentCombo.length >= 2) {
 							combinations.push(currentCombo.slice()); // 使用slice()创建副本
 						}
 
-						// 从start开始遍历数组中的每个元素
+
 						for (let i = start; i < arr.length; i++) {
-							// 将当前元素添加到组合中
+
 							const newCombo = currentCombo.concat(arr[i]);
-							// 递归调用buildCombinations，继续生成包含当前元素的组合
+
 							buildCombinations(i + 1, newCombo);
 						}
 					}
 
-					// 从数组的第一个元素开始生成组合
 					buildCombinations(0, []);
 
-					// 返回所有组合
+
 					return combinations;
 				}
 
